@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahdi Classes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" rel="stylesheet">
+
+
+
+    <style>
+
+    .arabic-text {
+        font-family: 'Lalezar', cursive;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between; /* Space between left and right content */
+        align-items: center; /* Center vertically */
+        padding: 30px; /* Increased height */
+        background-image: url('imgs/karbala.jpg'); /* Add your image path here */
+        background-size: cover; /* Make the background cover the entire header */
+        background-position: center; /* Center the background image */
+        color: #ffffff; /* White text color */
+    }
+
+        .navbar {
+            background-color: #3a8e3a;
+            padding: 10px;
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .nav-item {
+            margin-right: 20px;
+        }
+
+        .nav-item a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .tab-content {
+            padding: 20px;
+            display: none;
+        }
+
+        .upload-section {
+            margin: 20px;
+            padding: 10px;
+            background-color: #e7f5e7;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        /* .upload-button {
+            background-color: #3a8e3a;
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px 20px;
+            border-radius: 5px;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+        } */
+
+        .upload-label {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<script>
+    // Check if the user is authenticated
+    if (!localStorage.getItem('isLoggedIn')) {
+        window.location.href = 'index.html'; // Redirect to login page
+    }
+
+    // Log in the user and set the login status in localStorage
+    function login() {
+        localStorage.setItem('isLoggedIn', true);
+    }
+
+    // Call this function when the login is successful in index.html
+    // window.onload = login; // Uncomment this line if using a function in index.html
+
+    function showTab(tabId) {
+        const tabs = document.querySelectorAll('.tab-content');
+        tabs.forEach(tab => {
+            tab.style.display = 'none'; // Hide all tabs
+        });
+        document.getElementById(tabId).style.display = 'block'; // Show the selected tab
+    }
+</script>
+
+<body>
+    <header class="header">
+        <div class="left">
+            <p class="ya-sahibaz-zamaan arabic-text">صلى الله عليك يا ولي العصر (عج) أدركنا</p>
+        </div>
+        <div class="right">
+            <p class="bismillah arabic-text">بسم الله الرحمن الرحيم</p>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li class="nav-item"><a href="#" onclick="showTab('attendance')">Attendance</a></li>
+            <li class="nav-item"><a href="#" onclick="showTab('minutesOfMeeting')">Minutes of Meeting</a></li>
+            <li class="nav-item">
+                <a href="#">Check List</a>
+                <ul class="dropdown">
+                    <li><a href="#" onclick="showTab('checkListWeekly')">Weekly</a></li>
+                    <li><a href="#" onclick="showTab('checkListMonthly')">Monthly</a></li>
+                    <li><a href="#" onclick="showTab('checkListQuarterly')">Quarterly</a></li>
+                    <li><a href="#" onclick="showTab('checkListHalfYearly')">Half Yearly</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#">Report</a>
+                <ul class="dropdown">
+                    <li><a href="#" onclick="showTab('reportSensus')">Sensus Report</a></li>
+                    <li><a href="#" onclick="showTab('reportStudent')">Student Report</a></li>
+                    <li><a href="#" onclick="showTab('reportClass')">Class Report</a></li>
+                    <li><a href="#" onclick="showTab('reportIrregular')">Irregular Student Report</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#">Books</a>
+                <ul class="dropdown">
+                    <li><a href="#" onclick="showTab('booksTawheed')">Tawheed</a></li>
+                    <li><a href="#" onclick="showTab('booksAdl')">Adl</a></li>
+                    <li><a href="#" onclick="showTab('booksNabuwat')">Nabuwat</a></li>
+                    <li><a href="#" onclick="showTab('booksImamat')">Imamat</a></li>
+                    <li><a href="#" onclick="showTab('booksQayamat')">Qayamat</a></li>
+                    <li><a href="#" onclick="showTab('booksMahdaviyat')">Mahdaviyat</a></li>
+                    <li><a href="#" onclick="showTab('booksAhqaam')">Ahqaam</a></li>
+                    <li><a href="#" onclick="showTab('booksGeneral')">General</a></li>
+                </ul>
+            </li>
+            <li class="nav-item"><a href="#" onclick="showTab('articles')">Articles</a></li>
+            <li class="nav-item"><a href="#" onclick="showTab('selfAssessment')">Self Assessment</a></li>
+
+
+
+        </ul>
+    </nav>
+
+
+
+    <!-- Upload Icon -->
+    <div class="upload-button bottom-right" id="uploadIcon" style="cursor: pointer;">
+        <span class="upload-icon" onclick="alert('File uploaded')">📤</span>
+    </div>
+    
+    <!-- Modal Structure -->
+    <div id="uploadModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <div class="upload-section">
+                <label for="folderSelect" class="upload-label">Select Folder:</label>
+                <select id="folderSelect" class="folder-select">
+                    <option value="Attendance">Attendance</option>
+                    <option value="MinutesOfMeeting">Minutes of Meeting</option>
+                    <option value="CheckList/Weekly">Check List - Weekly</option>
+                    <option value="CheckList/Monthly">Check List - Monthly</option>
+                    <option value="CheckList/Quarterly">Check List - Quarterly</option>
+                    <option value="CheckList/HalfYearly">Check List - Half Yearly</option>
+                    <option value="PlanningAndAchievement">Planning & Achievement</option>
+                    <option value="Report/SensusReport">Report - Sensus Report</option>
+                    <option value="Report/StudentReport">Report - Student Report</option>
+                    <option value="Report/ClassReport">Report - Class Report</option>
+                    <option value="Report/IrregularStudentReport">Report - Irregular Student Report</option>
+                    <option value="Books/Tawheed">Books - Tawheed</option>
+                    <option value="Books/Adl">Books - Adl</option>
+                    <option value="Books/Nabuwat">Books - Nabuwat</option>
+                    <option value="Books/Imamat">Books - Imamat</option>
+                    <option value="Books/Qayamat">Books - Qayamat</option>
+                    <option value="Books/Mahdaviyat">Books - Mahdaviyat</option>
+                    <option value="Books/Ahqaam">Books - Ahqaam</option>
+                    <option value="Books/General">Books - General</option>
+                    <option value="Articles">Articles</option>
+                    <option value="SelfAssessment">Self Assessment</option>
+                </select>
+                <input type="file" id="fileInput" multiple class="file-input" />
+                <button id="uploadButton" class="upload-button">📤 Upload</button>
+            </div>
+        </div>
+    </div>
+   
+
+<!-- Sub-tabs for CheckList -->
+<div class="sub-tab-nav" id="checkListSubTabs" style="display: none;">
+    <button class="tab-button" onclick="showTab('checkListWeekly')">Weekly</button>
+    <button class="tab-button" onclick="showTab('checkListMonthly')">Monthly</button>
+    <button class="tab-button" onclick="showTab('checkListQuarterly')">Quarterly</button>
+    <button class="tab-button" onclick="showTab('checkListHalfYearly')">Half Yearly</button>
+</div>
+
+<!-- Sub-tabs for Report -->
+<div class="sub-tab-nav" id="reportSubTabs" style="display: none;">
+    <button class="tab-button" onclick="showTab('reportSensus')">Sensus Report</button>
+    <button class="tab-button" onclick="showTab('reportStudent')">Student Report</button>
+    <button class="tab-button" onclick="showTab('reportClass')">Class Report</button>
+    <button class="tab-button" onclick="showTab('reportIrregular')">Irregular Student Report</button>
+</div>
+
+<!-- Sub-tabs for Books -->
+<div class="sub-tab-nav" id="booksSubTabs" style="display: none;">
+    <button class="tab-button" onclick="showTab('booksTawheed')">Tawheed</button>
+    <button class="tab-button" onclick="showTab('booksAdl')">Adl</button>
+    <button class="tab-button" onclick="showTab('booksNabuwat')">Nabuwat</button>
+    <button class="tab-button" onclick="showTab('booksImamat')">Imamat</button>
+    <button class="tab-button" onclick="showTab('booksQayamat')">Qayamat</button>
+    <button class="tab-button" onclick="showTab('booksMahdaviyat')">Mahdaviyat</button>
+    <button class="tab-button" onclick="showTab('booksAhqaam')">Ahqaam</button>
+    <button class="tab-button" onclick="showTab('booksGeneral')">General</button>
+</div>
+
+<div id="content" class="tab-content-wrapper">
+    <div id="attendance" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Attendance</h2>
+        <ul id="attendanceList" class="file-list"></ul>
+    </div>
+    <div id="minutesOfMeeting" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Minutes of Meeting</h2>
+        <ul id="minutesOfMeetingList" class="file-list"></ul> 
+    </div>
+    <div id="checkList" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Check List</h2>
+        <ul id="checkListList" class="file-list"></ul>
+    </div>
+    <div id="planningAchievement" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Planning & Achievement</h2>
+        <ul id="planningAchievementList" class="file-list"></ul>
+    </div>
+    <div id="report" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Report</h2>
+        <ul id="reportList" class="file-list"></ul>
+    </div>
+    <div id="books" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Books</h2>
+        <ul id="booksList" class="file-list"></ul>
+    </div>
+    <div id="articles" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Articles</h2>
+        <ul id="articlesList" class="file-list"></ul>
+    </div>
+    <div id="selfAssessment" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Self Assessment</h2>
+        <ul id="selfAssessmentList" class="file-list"></ul>
+    </div>
+
+    <!-- Sub-content for Check List -->
+    <div id="checkListWeekly" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Check List - Weekly</h2>
+        <ul id="checkListWeeklyList" class="file-list"></ul>
+    </div>
+    <div id="checkListMonthly" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Check List - Monthly</h2>
+        <ul id="checkListMonthlyList" class="file-list"></ul>
+    </div>
+    <div id="checkListQuarterly" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Check List - Quarterly</h2>
+        <ul id="checkListQuarterlyList" class="file-list"></ul>
+    </div>
+    <div id="checkListHalfYearly" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Check List - Half Yearly</h2>
+        <ul id="checkListHalfYearlyList" class="file-list"></ul>
+    </div>
+
+    <!-- Sub-content for Report -->
+    <div id="reportSensus" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Sensus Report</h2>
+        <ul id="reportSensusList" class="file-list"></ul>
+    </div>
+    <div id="reportStudent" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Student Report</h2>
+        <ul id="reportStudentList" class="file-list"></ul>
+    </div>
+    <div id="reportClass" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Class Report</h2>
+        <ul id="reportClassList" class="file-list"></ul>
+    </div>
+    <div id="reportIrregular" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Irregular Student Report</h2>
+        <ul id="reportIrregularList" class="file-list"></ul>
+    </div>
+
+    <!-- Sub-content for Books -->
+    <div id="booksTawheed" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Books - Tawheed</h2>
+        <ul id="booksTawheedList" class="file-list"></ul>
+    </div>
+    <div id="booksAdl" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Books - Adl</h2>
+        <ul id="booksAdlList" class="file-list"></ul>
+    </div>
+    <div id="booksNabuwat" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Books - Nabuwat</h2>
+        <ul id="booksNabuwatList" class="file-list"></ul>
+    </div>
+    <div id="booksImamat" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Books - Imamat</h2>
+        <ul id="booksImamatList" class="file-list"></ul>
+    </div>
+    <div id="booksQayamat" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Books - Qayamat</h2>
+        <ul id="booksQayamatList" class="file-list"></ul>
+    </div>
+    <div id="booksMahdaviyat" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Books - Mahdaviyat</h2>
+        <ul id="booksMahdaviyatList" class="file-list"></ul>
+    </div>
+    <div id="booksAhqaam" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Books - Ahqaam</h2>
+        <ul id="booksAhqaamList" class="file-list"></ul>
+    </div>
+    <div id="booksGeneral" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Books - General</h2>
+        <ul id="booksGeneralList" class="file-list"></ul>
+    </div>
+</div>
+
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>

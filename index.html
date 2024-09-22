@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    
+        .login-container {
+            background-color: #fff;
+            padding: 20px 40px;
+   
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+    
+        .login-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+    
+        .login-form {
+            display: flex;
+            flex-direction: column;
+        }
+    
+        .login-label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            text-align: left;
+            color: #555;
+        }
+    
+        .login-input {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 92%;
+        }
+    
+        .login-input:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+        }
+    
+        .login-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px;
+            font-size: 16px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+    
+        .login-button:hover {
+            background-color: #0056b3;
+        }
+    
+        .error-message {
+            color: #ff0000;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+    </style>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('loginForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent form submission
+
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                if (username === 'seccomm110' && password === 'Sec.Comm110') {
+                    // Redirect to main.html if credentials are correct
+                    window.location.href = 'main.html';
+                } else {
+                    // Show error message if credentials are incorrect
+                    const errorMessage = document.getElementById('errorMessage');
+                    errorMessage.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="login-container">
+        <h2 class="login-title">Login</h2>
+        <form id="loginForm" class="login-form">
+            <label for="username" class="login-label">Username:</label>
+            <input type="text" id="username" class="login-input" placeholder="Username" required>
+            <label for="password" class="login-label">Password:</label>
+            <input type="password" id="password" class="login-input" placeholder="Password" required>
+            <button type="submit" class="login-button">Login</button>
+            <div id="errorMessage" class="error-message" style="display:none;">Invalid username or password!</div>
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('loginForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent form submission
+
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                if (username === 'seccomm110' && password === 'Sec.Comm110') {
+                    localStorage.setItem('isLoggedIn', true); // Set login status
+                    setTimeout(function() {
+                        // Redirect to main.html after a short delay
+                        window.location.href = 'main.html';
+                    }, 100); // 100 ms delay
+                } else {
+                    // Show error message if credentials are incorrect
+                    const errorMessage = document.getElementById('errorMessage');
+                    errorMessage.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
