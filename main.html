@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mahdi Classes</title>
+    <title>Al-Mahdi</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" rel="stylesheet">
 
@@ -158,7 +158,7 @@
 
     <!-- Upload Icon -->
     <div class="upload-button bottom-right" id="uploadIcon" style="cursor: pointer;">
-        <span class="upload-icon" onclick="alert('File uploaded')">📤</span>
+        <span class="upload-icon">📤</span>
     </div>
     
     <!-- Modal Structure -->
@@ -191,7 +191,7 @@
                     <option value="SelfAssessment">Self Assessment</option>
                 </select>
                 <input type="file" id="fileInput" multiple class="file-input" />
-                <button id="uploadButton" class="upload-button">📤 Upload</button>
+                <button id="uploadButton closeModal" class="upload-button" onclick="alert('File is uploaded but it takes some time to get loaded. Please wait...')">📤 Upload</button>
             </div>
         </div>
     </div>
