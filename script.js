@@ -7,7 +7,7 @@ const tokenPart3 = '3gckWa';
 const token = `${tokenPart1}${tokenPart2}${tokenPart3}`; // Reconstruct the full token
 
 const repoOwner = 'seccomm110'; // Your GitHub username
-const repoName = 'web'; // Your repository name
+const repoName = 'web-a'; // Your repository name
 
 const fileStructure = {
     attendance: 'Attendance',

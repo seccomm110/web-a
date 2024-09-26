@@ -6,6 +6,9 @@
     <title>Al-Mahdi</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="dashboard.js"></script>
 
 
 
@@ -27,7 +30,8 @@
     }
 
         .navbar {
-            background-color: #3a8e3a;
+            /* background-color: #3a8e3a; */
+            background: rgb(9, 9, 17);;
             padding: 10px;
         }
 
@@ -77,8 +81,34 @@
             margin-bottom: 5px;
         }
     </style>
-</head>
+
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    // Show the Dashboard by default on page load
+    showContent("dashboard");
+});
+
+function showContent(contentType) {
+    // Hide all sections
+    document.querySelectorAll(".content").forEach(section => {
+        section.style.display = "none";
+    });
+
+    // Show the selected section
+    const contentSection = document.getElementById(contentType);
+    if (contentSection) {
+        contentSection.style.display = "block";
+    }
+}
+
+// Add event listeners to navbar items
+document.querySelectorAll(".nav-link").forEach(link => {
+    link.addEventListener("click", function() {
+        const target = this.getAttribute("data-target");
+        showContent(target);
+    });
+});
+
     // Check if the user is authenticated
     if (!localStorage.getItem('isLoggedIn')) {
         window.location.href = 'index.html'; // Redirect to login page
@@ -101,6 +131,8 @@
     }
 </script>
 
+</head>
+
 <body>
     <header class="header">
         <div class="left">
@@ -113,6 +145,7 @@
 
     <nav class="navbar">
         <ul class="nav-list">
+            <li class="nav-item"><a href="#" onclick="showTab('dashboard')">Dashboard</a></li>
             <li class="nav-item"><a href="#" onclick="showTab('attendance')">Attendance</a></li>
             <li class="nav-item"><a href="#" onclick="showTab('minutesOfMeeting')">Minutes of Meeting</a></li>
             <li class="nav-item">
@@ -156,10 +189,29 @@
 
 
 
-    <!-- Upload Icon -->
-    <div class="upload-button bottom-right" id="uploadIcon" style="cursor: pointer;">
-        <span class="upload-icon">📤</span>
+    <div id="dashboard" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Dashboard</h2>
+        <div class="dashboard-container">
+            <div class="dashboard-card" id="classCard">
+                <h3>Classes</h3>
+                <div id="class-AUH1" class="class-card">Class AUH1</div>
+                <div id="class-DS3" class="class-card">Class DS3</div>
+                <div id="class-DS5" class="class-card">Class DS5</div>
+            </div>
+            <div class="dashboard-card" id="reportCard">
+                <h3>Report</h3>
+                <div id="reportContent"></div> <!-- This will display content from report.xlsx -->
+            </div>
+            <div class="dashboard-card" id="pieChartCard">
+                <h3>Pie Chart</h3>
+                <div id="pieChartContent"></div> <!-- This will display the pie chart -->
+            </div>
+        </div>
+        <div id="dashboardContent"></div>
     </div>
+    
+    
+
     
     <!-- Modal Structure -->
     <div id="uploadModal" class="modal">
@@ -333,6 +385,13 @@
 
 
 
+<!-- Upload Icon -->
+<div class="upload-button bottom-right" id="uploadIcon" style="cursor: pointer;">
+    <span class="upload-icon">📤</span>
+</div>
+
+
     <script src="script.js"></script>
+    <script src="dashboard.js"></script>
 </body>
 </html>
