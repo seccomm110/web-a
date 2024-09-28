@@ -4,15 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Al-Mahdi</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css & js/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="css & js/dashboard.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
-    <script src="dashboard.js"></script>
+    <script src="css & js/dashboard.js"></script>
+
 
 
 
     <style>
+
+        .bg-img{
+            background-image: url('imgs/bg1.jpg'); 
+            background-image: url('imgs/bg2.png'); 
+            /* background-image: url('imgs/bg3.png');  */
+            background-image: url('imgs/bg4.png'); 
+            /* background-image: url('imgs/bg5.png');  */
+            /* background-image: url('imgs/bg6.png');  */
+            background-image: url('imgs/bg7.png'); 
+            background-size: cover; /* Make the background cover the entire header */
+        background-position: center; /* Center the background image */
+        /* border-radius: 0px 0px 5px 5px; */
+        z-index: 1000;
+        }
+
 
     .arabic-text {
         font-family: 'Lalezar', cursive;
@@ -22,17 +38,20 @@
         display: flex;
         justify-content: space-between; /* Space between left and right content */
         align-items: center; /* Center vertically */
-        padding: 30px; /* Increased height */
-        background-image: url('imgs/karbala.jpg'); /* Add your image path here */
-        background-size: cover; /* Make the background cover the entire header */
-        background-position: center; /* Center the background image */
+        padding: 150px; /* Increased height */
+        border-radius: 5px;
+
+
         color: #ffffff; /* White text color */
     }
 
         .navbar {
             /* background-color: #3a8e3a; */
-            background: rgb(9, 9, 17);;
+            /* background: rgb(9, 9, 17);; */
+            backdrop-filter: blur(20px);
             padding: 10px;
+            border-top: 2px solid #333; /* Set the border only at the top */
+            color:red;
         }
 
         .nav-list {
@@ -40,20 +59,28 @@
             padding: 0;
             margin: 0;
             display: flex;
+
         }
 
         .nav-item {
             margin-right: 20px;
+            position: relative;
+            overflow: visible;
+            
         }
 
+
         .nav-item a {
-            color: white;
+            /* color: #333; */
+            color:#fff;
             text-decoration: none;
+            
         }
 
         .tab-content {
             padding: 20px;
-            display: none;
+            /* display: none; */
+            
         }
 
         .upload-section {
@@ -80,6 +107,9 @@
             display: block;
             margin-bottom: 5px;
         }
+
+        
+
     </style>
 
 <script>
@@ -134,6 +164,7 @@ document.querySelectorAll(".nav-link").forEach(link => {
 </head>
 
 <body>
+    <div class="bg-img">
     <header class="header">
         <div class="left">
             <p class="ya-sahibaz-zamaan arabic-text">صلى الله عليك يا ولي العصر (عج) أدركنا</p>
@@ -142,72 +173,50 @@ document.querySelectorAll(".nav-link").forEach(link => {
             <p class="bismillah arabic-text">بسم الله الرحمن الرحيم</p>
         </div>
     </header>
-
+<!-- <hr style="width: 80%; color:white;"> -->
     <nav class="navbar">
         <ul class="nav-list">
-            <li class="nav-item"><a href="#" onclick="showTab('dashboard')">Dashboard</a></li>
+            <li class="nav-item"><a href="#" onclick="showTab('dashboard')">Home</a></li>
             <li class="nav-item"><a href="#" onclick="showTab('attendance')">Attendance</a></li>
             <li class="nav-item"><a href="#" onclick="showTab('minutesOfMeeting')">Minutes of Meeting</a></li>
-            <li class="nav-item">
-                <a href="#">Check List</a>
-                <ul class="dropdown">
-                    <li><a href="#" onclick="showTab('checkListWeekly')">Weekly</a></li>
-                    <li><a href="#" onclick="showTab('checkListMonthly')">Monthly</a></li>
-                    <li><a href="#" onclick="showTab('checkListQuarterly')">Quarterly</a></li>
-                    <li><a href="#" onclick="showTab('checkListHalfYearly')">Half Yearly</a></li>
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a href="#">Report</a>
-                <ul class="dropdown">
-                    <li><a href="#" onclick="showTab('reportSensus')">Sensus Report</a></li>
-                    <li><a href="#" onclick="showTab('reportStudent')">Student Report</a></li>
-                    <li><a href="#" onclick="showTab('reportClass')">Class Report</a></li>
-                    <li><a href="#" onclick="showTab('reportIrregular')">Irregular Student Report</a></li>
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a href="#">Books</a>
-                <ul class="dropdown">
-                    <li><a href="#" onclick="showTab('booksTawheed')">Tawheed</a></li>
-                    <li><a href="#" onclick="showTab('booksAdl')">Adl</a></li>
-                    <li><a href="#" onclick="showTab('booksNabuwat')">Nabuwat</a></li>
-                    <li><a href="#" onclick="showTab('booksImamat')">Imamat</a></li>
-                    <li><a href="#" onclick="showTab('booksQayamat')">Qayamat</a></li>
-                    <li><a href="#" onclick="showTab('booksMahdaviyat')">Mahdaviyat</a></li>
-                    <li><a href="#" onclick="showTab('booksAhqaam')">Ahqaam</a></li>
-                    <li><a href="#" onclick="showTab('booksGeneral')">General</a></li>
-                </ul>
-            </li>
+            <li class="nav-item"><a href="#" onclick="showTab('checkList')">Check List</a></li>
+            <li class="nav-item"><a href="#" onclick="showTab('books')">Books</a></li>
+
             <li class="nav-item"><a href="#" onclick="showTab('articles')">Articles</a></li>
-            <li class="nav-item"><a href="#" onclick="showTab('selfAssessment')">Self Assessment</a></li>
+            <li class="nav-item"><a href="#" onclick="showTab('Achievement')">Achievement</a></li>
 
 
 
         </ul>
     </nav>
+</div>
+
 
 
 
     <div id="dashboard" class="tab-content" style="display:none;">
-        <h2 class="tab-title">Dashboard</h2>
+        <h2 class="tab-title">Welcome to Secondary Committee</h2>
         <div class="dashboard-container">
+            <!-- Class Card -->
             <div class="dashboard-card" id="classCard">
                 <h3>Classes</h3>
-                <div id="class-AUH1" class="class-card">Class AUH1</div>
-                <div id="class-DS3" class="class-card">Class DS3</div>
-                <div id="class-DS5" class="class-card">Class DS5</div>
+                <div id="class-AUH1" class="class-card" onclick="showClassContent('AUH1')">AUH1</div>
+                <div id="class-DS3" class="class-card" onclick="showClassContent('DS3')">DS3</div>
+                <div id="class-DS5" class="class-card" onclick="showClassContent('DS5')">DS5</div>
             </div>
+            <!-- Content Section for Class/Report -->
+            <div id="dashboardContent" class="dashboard-card"></div>
+            <!-- Report Card -->
             <div class="dashboard-card" id="reportCard">
-                <h3>Report</h3>
-                <div id="reportContent"></div> <!-- This will display content from report.xlsx -->
+                <!-- <h3>Report</h3> -->
+                <div id="reportContent"></div>
             </div>
+            <!-- Pie Chart Card -->
             <div class="dashboard-card" id="pieChartCard">
-                <h3>Pie Chart</h3>
-                <div id="pieChartContent"></div> <!-- This will display the pie chart -->
+                <!-- <h3>Pie Chart</h3> -->
+                <div id="pieChartContent"></div>
             </div>
         </div>
-        <div id="dashboardContent"></div>
     </div>
     
     
@@ -240,7 +249,7 @@ document.querySelectorAll(".nav-link").forEach(link => {
                     <option value="Books/Ahqaam">Books - Ahqaam</option>
                     <option value="Books/General">Books - General</option>
                     <option value="Articles">Articles</option>
-                    <option value="SelfAssessment">Self Assessment</option>
+                    <option value="Achievement">Achievement</option>
                 </select>
                 <input type="file" id="fileInput" multiple class="file-input" />
                 <button id="uploadButton closeModal" class="upload-button" onclick="alert('File is uploaded but it takes some time to get loaded. Please wait...')">📤 Upload</button>
@@ -282,34 +291,198 @@ document.querySelectorAll(".nav-link").forEach(link => {
         <h2 class="tab-title">Attendance</h2>
         <ul id="attendanceList" class="file-list"></ul>
     </div>
+
+
+
+
+
+
+
+
     <div id="minutesOfMeeting" class="tab-content" style="display:none;">
         <h2 class="tab-title">Minutes of Meeting</h2>
         <ul id="minutesOfMeetingList" class="file-list"></ul> 
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <div id="checkList" class="tab-content" style="display:none;">
         <h2 class="tab-title">Check List</h2>
         <ul id="checkListList" class="file-list"></ul>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
     <div id="planningAchievement" class="tab-content" style="display:none;">
         <h2 class="tab-title">Planning & Achievement</h2>
         <ul id="planningAchievementList" class="file-list"></ul>
     </div>
-    <div id="report" class="tab-content" style="display:none;">
-        <h2 class="tab-title">Report</h2>
-        <ul id="reportList" class="file-list"></ul>
-    </div>
+
+
+
+
+
+
+
+
+    
     <div id="books" class="tab-content" style="display:none;">
-        <h2 class="tab-title">Books</h2>
-        <ul id="booksList" class="file-list"></ul>
+        <div class="container">
+            <div class="left-column">
+                <div class="dropdown">
+                    <div class="select">
+                        <span class="selected">Select Books Category</span>
+                        <div class="caret"></div>
+                    </div>
+                    <ul class="menu">
+                        <li class="dropdown-item" id="tawheedDropdown">
+                            <span>Tawheed</span>
+                            <ul class="sub-content" id="booksTawheedList"></ul>
+                        </li>
+                        <li class="dropdown-item" id="adlDropdown">
+                            <span>Adl</span>
+                            <ul class="sub-content" id="booksAdlList"></ul>
+                        </li>
+                        <li class="dropdown-item" id="nabuwatDropdown">
+                            <span>Nabuwat</span>
+                            <ul class="sub-content" id="booksNabuwatList"></ul>
+                        </li>
+                        <li class="dropdown-item" id="imamatDropdown">
+                            <span>Imamat</span>
+                            <ul class="sub-content" id="booksImamatList"></ul>
+                        </li>
+                        <li class="dropdown-item" id="qayamatDropdown">
+                            <span>Qayamat</span>
+                            <ul class="sub-content" id="booksQayamatList"></ul>
+                        </li>
+                        <li class="dropdown-item" id="mahdaviyatDropdown">
+                            <span>Mahdaviyat</span>
+                            <ul class="sub-content" id="booksMahdaviyatList"></ul>
+                        </li>
+                        <li class="dropdown-item" id="ahqaamDropdown">
+                            <span>Ahqaam</span>
+                            <ul class="sub-content" id="booksAhqaamList"></ul>
+                        </li>
+                        <li class="dropdown-item" id="generalDropdown">
+                            <span>General</span>
+                            <ul class="sub-content" id="booksGeneralList"></ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="right-column">
+                <iframe id="fileViewer" src="" width="100%" height="500px" style="display:none;"></iframe>
+            </div>
+        </div>
     </div>
+
+    <script>
+        async function fetchBooks() {
+            // Fetch the list of books from GitHub
+            const response = await fetch('https://api.github.com/repos/seccomm110/web-a/contents/Books');
+            const books = await response.json();
+
+            // Create a mapping of categories to their respective lists
+            const categories = {
+                'Tawheed': 'booksTawheedList',
+                'Adl': 'booksAdlList',
+                'Nabuwat': 'booksNabuwatList',
+                'Imamat': 'booksImamatList',
+                'Qayamat': 'booksQayamatList',
+                'Mahdaviyat': 'booksMahdaviyatList',
+                'Ahqaam': 'booksAhqaamList',
+                'General': 'booksGeneralList'
+            };
+
+            // Clear previous content
+            Object.values(categories).forEach(listId => {
+                document.getElementById(listId).innerHTML = '';
+            });
+
+            // Populate dropdowns with book links
+            books.forEach(book => {
+                const li = document.createElement('li');
+                li.textContent = book.name; // Display the file name
+                li.onclick = () => showFile(book.path); // Use the file path
+
+                // Determine which category to append to based on book name
+                for (const [category, listId] of Object.entries(categories)) {
+                    if (book.name.toLowerCase().includes(category.toLowerCase())) {
+                        document.getElementById(listId).appendChild(li);
+                    }
+                }
+            });
+        }
+
+        function showFile(filePath) {
+            const fileViewer = document.getElementById('fileViewer');
+            // Construct the Google Docs viewer URL
+            const rawURL = `https://raw.githubusercontent.com/seccomm110/web-a/main/${filePath}`;
+            fileViewer.src = `https://docs.google.com/viewer?url=${encodeURIComponent(rawURL)}&embedded=true`; 
+            fileViewer.style.display = 'block'; // Make the iframe visible
+        }
+
+        // Call the fetchBooks function when the tab is displayed
+        document.getElementById('books').addEventListener('click', () => {
+            fetchBooks();
+        });
+    </script>
+
+    
+    
+
+
+
     <div id="articles" class="tab-content" style="display:none;">
         <h2 class="tab-title">Articles</h2>
         <ul id="articlesList" class="file-list"></ul>
     </div>
-    <div id="selfAssessment" class="tab-content" style="display:none;">
-        <h2 class="tab-title">Self Assessment</h2>
-        <ul id="selfAssessmentList" class="file-list"></ul>
+
+
+
+
+
+
+
+
+    <div id="Achievement" class="tab-content" style="display:none;">
+        <h2 class="tab-title">Achievement</h2>
+        <ul id="AchievementList" class="file-list"></ul>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- Sub-content for Check List -->
     <div id="checkListWeekly" class="tab-content" style="display:none;">
@@ -327,24 +500,6 @@ document.querySelectorAll(".nav-link").forEach(link => {
     <div id="checkListHalfYearly" class="tab-content" style="display:none;">
         <h2 class="tab-title">Check List - Half Yearly</h2>
         <ul id="checkListHalfYearlyList" class="file-list"></ul>
-    </div>
-
-    <!-- Sub-content for Report -->
-    <div id="reportSensus" class="tab-content" style="display:none;">
-        <h2 class="tab-title">Sensus Report</h2>
-        <ul id="reportSensusList" class="file-list"></ul>
-    </div>
-    <div id="reportStudent" class="tab-content" style="display:none;">
-        <h2 class="tab-title">Student Report</h2>
-        <ul id="reportStudentList" class="file-list"></ul>
-    </div>
-    <div id="reportClass" class="tab-content" style="display:none;">
-        <h2 class="tab-title">Class Report</h2>
-        <ul id="reportClassList" class="file-list"></ul>
-    </div>
-    <div id="reportIrregular" class="tab-content" style="display:none;">
-        <h2 class="tab-title">Irregular Student Report</h2>
-        <ul id="reportIrregularList" class="file-list"></ul>
     </div>
 
     <!-- Sub-content for Books -->
@@ -384,14 +539,14 @@ document.querySelectorAll(".nav-link").forEach(link => {
 
 
 
-
+<br><br><br><br> <br><br>
 <!-- Upload Icon -->
 <div class="upload-button bottom-right" id="uploadIcon" style="cursor: pointer;">
-    <span class="upload-icon">📤</span>
+    <span class="upload-icon" id="uploadButton">📤</span>
 </div>
 
 
-    <script src="script.js"></script>
-    <script src="dashboard.js"></script>
+    <script src="css & js/script.js"></script>
+    <script src="css & js/dashboard.js"></script>
 </body>
 </html>

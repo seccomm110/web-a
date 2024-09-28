@@ -1,0 +1,176 @@
+/* Dashboard Container */
+.dashboard-container {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: row; /* Arrange items in a row */
+    gap: 20px; /* Space between cards */
+    align-items: flex-start; /* Align cards to the top */
+}
+
+/* Dashboard Card - Default State */
+.dashboard-card {
+    background-color: #1A1A2E; /* A deep navy color */
+    border-radius: 12px; /* Slightly larger border radius for a softer look */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+    padding: 20px;
+    color: white;
+    flex: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+    opacity: 0; /* Start hidden for animation */
+    transform: translateY(20px); /* Start slightly below */
+    animation: fadeIn 0.5s forwards; /* Fade-in effect */
+}
+
+/* Smaller Dashboard Card */
+.dashboard-card.small {
+    flex: 0.01; /* Make the card smaller */
+    /* width: 20%; */
+     /* Adjust the width when in small mode */
+}
+
+/* Hover Animation for Dashboard Card */
+.dashboard-card:hover {
+    transform: translateY(-5px); /* Lift card on hover */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Class Cards */
+.class-card {
+    background-color: #16213E; /* Darker shade for class cards */
+    border: 2px solid #0F3460; /* Border with a contrasting color */
+    color: #E94560; /* Light red color for text */
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px; /* Rounded corners */
+    text-align: center; /* Center align text */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s; /* Smooth transition effects */
+}
+
+/* Hover Animation for Class Cards */
+.class-card:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    color: #1A1A2E; /* Change text color on hover */
+    background-color: #F3C3C3; /* Background changes to a light color on hover */
+}
+
+/* Fade In Animation for Dashboard Cards */
+@keyframes fadeIn {
+    to {
+        opacity: 1; /* Fully visible */
+        transform: translateY(0); /* Reset position */
+    }
+}
+
+/* Pie Chart Section */
+#pieChartContent {
+    opacity: 0; /* Start hidden */
+    animation: fadeIn 0.5s forwards; /* Trigger fade-in effect */
+}
+
+/* Dashboard Content (appears to the right of the classes) */
+#dashboardContent {
+    background-color: #ffffff; /* White background */
+    padding: 15px; /* Padding inside */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    min-width: 200px; /* Ensure a minimum width */
+    display: none; /* Hidden by default */
+}
+
+/* Table Styling for Excel Data */
+.excel-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.excel-table th, .excel-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 14px;
+}
+
+.excel-table th {
+    background-color: #4CAF50; /* Green background for header */
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.excel-table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Alternate row colors */
+}
+
+.excel-table tr:hover {
+    background-color: #ddd; /* Highlight row on hover */
+    transition: background-color 0.2s;
+}
+
+.excel-table td {
+    color: #333;
+}
+
+/* Make the table responsive */
+@media (max-width: 768px) {
+    .excel-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+/* Table Styling for Excel Data */
+.excel-table {
+    width: 100%;
+    border-collapse: collapse; /* Ensure borders are merged */
+    margin-top: 20px;
+    background-color: #ffffff; /* White background for the table */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Prevents overflow */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Table Header Styling */
+.excel-table th {
+    padding: 15px; /* Increased padding for better spacing */
+    border: 2px solid #4CAF50; /* Dark green border for headers */
+    text-align: center; /* Center-align text */
+    font-size: 16px; /* Slightly larger font for readability */
+    background-color: #4CAF50; /* Green background for header */
+    color: white; /* White text color */
+    text-transform: uppercase; /* Uppercase for headers */
+    font-weight: bold; /* Bold text for headers */
+}
+
+/* Table Cell Styling */
+.excel-table td {
+    padding: 15px; /* Increased padding for better spacing */
+    border: 1px solid #ddd; /* Light gray border for cells */
+    text-align: center; /* Center-align text */
+    font-size: 16px; /* Slightly larger font for readability */
+    color: #333; /* Dark gray for cell text */
+}
+
+/* Alternating Row Colors */
+.excel-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray for even rows */
+}
+
+/* Row Hover Effect */
+.excel-table tr:hover {
+    background-color: #e0f7fa; /* Light blue background on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+/* Make the table responsive */
+@media (max-width: 768px) {
+    .excel-table {
+        display: block; /* Enable scrolling for smaller screens */
+        overflow-x: auto; /* Allow horizontal scrolling */
+        white-space: nowrap; /* Prevent line breaks */
+    }
+}

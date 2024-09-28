@@ -1,0 +1,486 @@
+    /* General Styles */
+    /* #3a8e3a */
+    /* rgb(9, 9, 17) */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        color: #333; /* Dark gray text */
+    }
+
+    /* Header Styles */
+    #header {
+        display: flex;
+        justify-content: space-between; /* Space between left and right content */
+        align-items: center; /* Center vertically */
+        padding: 30px; /* Increased height */
+        background-image: url('imgs/karbala.jpg'); /* Add your image path here */
+        background-size: cover; /* Make the background cover the entire header */
+        background-position: center; /* Center the background image */
+        color: #ffffff; /* White text color */
+    }
+
+    .header-left {
+        text-align: left; /* Align text to the left */
+    }
+
+    .header-right {
+        text-align: right; /* Align text to the right */
+    }
+
+    .bismillah, .ya-sahibaz-zamaan {
+        font-family: 'Arabic Typesetting', serif; /* Use a suitable Arabic font */
+        font-size: 24px; /* Adjust font size as needed */
+        margin: 0; /* Remove margin */
+    }
+
+    /* Navbar Styles */
+    #navbar {
+        /* background-color: rgb(9, 9, 17);;  */
+        background-color: rgb(9, 9, 17);;
+        padding: 10px;
+    }
+
+    .nav-list {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav-item {
+        margin: 0 15px;
+        position: relative; 
+    }
+
+    .nav-item a {
+        color: white; /* White text */
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .nav-item a:hover {
+        text-decoration: underline;
+    }
+
+
+
+    /* Tab Content Styles */
+    .tab-content-wrapper {
+        padding: 20px;
+        background-color: white; /* White background for content */
+        border-radius: 5px;
+        /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
+        margin: 20px;
+    }
+
+    .tab-title {
+        color: rgb(9, 9, 17);
+    }
+
+    /* File List Styles */
+    .file-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .file-list li {
+        padding: 10px 15px; /* Add padding */
+        border: 1px solid #ddd; /* Light gray border */
+        border-radius: 5px; /* Rounded corners */
+        margin-bottom: 10px; /* Space between items */
+        background-color: #ffffff; /* White background for items */
+        transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+        opacity: 0; /* Start invisible */
+        transform: translateY(10px); /* Start slightly lower */
+        animation: fadeInUp 0.3s forwards; /* Fade in and slide up */
+    }
+
+    .file-list li:hover {
+        background-color: #f0f0f0; /* Light gray background on hover */
+        transform: scale(1.02); /* Slightly enlarge on hover */
+    }
+
+    /* Animation Keyframes */
+    @keyframes fadeInUp {
+        to {
+            opacity: 1; /* Fully visible */
+            transform: translateY(0); /* Move to original position */
+        }
+    }
+
+    .file-list a {
+        text-decoration: none; /* No underline */
+        color: #3a8e3a; /* Matching green for links */
+        font-weight: bold; /* Bold text */
+    }
+
+    .file-list a:hover {
+        text-decoration: underline; /* Underline on hover */
+    }
+
+    /* Sublist Styles */
+    .file-list ul {
+        list-style: none; /* No bullets */
+        padding-left: 20px; /* Indent sublists */
+    }
+
+    .file-list ul li {
+        padding: 8px 10px; /* Padding for sublist items */
+        border: 1px dashed #ccc; /* Dashed border for sublist items */
+        background-color: #f9f9f9; /* Light gray background for sublist items */
+        margin-bottom: 5px; /* Space between sublist items */
+        opacity: 0; /* Start invisible */
+        transform: translateY(10px); /* Start slightly lower */
+        animation: fadeInUp 0.3s forwards; /* Fade in and slide up */
+    }
+
+    .file-list ul li:hover {
+        background-color: #e7f7e7; /* Light green on hover */
+    }
+
+    /* Login Page Styles */
+    #login-container {
+        max-width: 400px; /* Set a maximum width */
+        margin: 100px auto; /* Center the container */
+        padding: 20px; /* Add padding */
+        background-color: white; /* White background */
+        text-align: center; /* Center text */
+    }
+
+    #login-container h2 {
+        margin-bottom: 20px; /* Space below heading */
+        color: #3a8e3a; /* Match header color */
+    }
+
+    #login-container label {
+        display: block; /* Block display for labels */
+        margin-bottom: 5px; /* Space below labels */
+        font-weight: bold; /* Bold text */
+    }
+
+    #login-container input[type="text"],
+    #login-container input[type="password"] {
+        width: 100%; /* Full width */
+        padding: 10px; /* Padding inside inputs */
+        margin-bottom: 15px; /* Space below inputs */
+    }
+
+    #login-container button {
+        background-color: #3a8e3a; /* Button color */
+        color: white; /* Button text color */
+        border: none; /* No border */
+        padding: 10px; /* Padding inside button */
+        cursor: pointer; /* Pointer on hover */
+        font-size: 16px; /* Font size */
+        transition: background-color 0.3s; /* Transition for hover effect */
+    }
+
+    #login-container button:hover {
+        background-color: rgb(9, 9, 17);; /* Darker green on hover */
+    }
+
+    .error-message {
+        color: red; /* Red for error messages */
+        margin-top: 15px; /* Space above error message */
+    }
+
+    .folder-select,
+    .file-input {
+        margin: 5px 0; /* Reduced margin */
+        padding: 5px; /* Reduced padding */
+        width: 100%; /* Full width */
+        font-size: 0.8em; /* Smaller font */
+    }
+
+    /* Modal Styles */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0); /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        position: relative; /* Positioning for child elements */
+        background-color: #fefefe;
+        margin: 15% auto; /* 15% from the top and centered */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%; /* Could be more or less, depending on screen size */
+    }
+
+    /* Close Button */
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .upload-button {
+        left: 10px; 
+        position:sticky; /* Make it fixed */
+        bottom: 20px; /* Space from the bottom */
+        right: 20px; /* Space from the right */
+        background-color: rgb(9, 9, 17); /* Green background */
+        border: none; /* Remove borders */
+        color: white; /* White text */
+        padding: 10px 20px; /* Some padding */
+        text-align: center; /* Centered text */
+        text-decoration: none; /* No underline */
+        display: inline-flex; /* Flex for icon and text */
+        align-items: center; /* Center vertically */
+        border-radius: 5px; /* Rounded corners */
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+        z-index: 100; /* Ensure it stays above other content */
+    }
+
+    .upload-button:hover {
+        background-color: #45a049; /* Darker green on hover */
+        transform: scale(1.05); /* Slightly enlarge on hover */
+    }
+
+    .upload-icon {
+        margin-right: 5px; /* Space between icon and text */
+    }
+
+
+    .upload-button:hover {
+        background-color:rgb(12, 12, 27); /* Darker green on hover */
+        transform: scale(1.05); /* Slightly enlarge */
+    }
+
+    .upload-button:active {
+        transform: scale(0.95); /* Shrink on click */
+    }
+
+    li {
+        display: flex; /* Use flexbox for layout */
+        justify-content: space-between; /* Space between items */
+        align-items: center; /* Center items vertically */
+    }
+
+    .delete-button {
+        background-color: #f44336; /* Red background */
+        color: white; /* White text */
+        border: none; /* No border */
+        padding: 8px 12px; /* Padding around text */
+        text-align: center; /* Center the text */
+        text-decoration: none; /* Remove underline */
+        margin-left: 16px; /* Space between file name and button */
+        cursor: pointer; /* Change cursor to pointer */
+        border-radius: 4px; /* Rounded corners */
+        transition: background-color 0.3s; /* Smooth transition */
+    }
+
+    .delete-button:hover {
+        background-color: #d32f2f; /* Darker red on hover */
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+/* Dropdown container styling */
+.dropdown {
+    box-sizing: border-box;
+    position: relative;
+}
+
+/* Styling for the main dropdown button */
+.select {
+    background: #2a2f3b;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px #2a2f3b solid;
+    border-radius: 0.5em;
+    padding: 1em;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+/* Dropdown focus/active state */
+.selected-clicked {
+    border: 2px #26489a solid;
+    box-shadow: 0 0 0.8em #26489a;
+}
+
+/* Hover effect for dropdown */
+.select:hover {
+    background: #323741;
+}
+
+/* Caret icon styling */
+.caret {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #fff;
+    transition: 0.3s;
+}
+
+/* Rotate caret icon when dropdown is open */
+.caret-rotate {
+    transform: rotate(180deg);
+}
+
+/* Dropdown menu styling */
+.menu {
+    list-style: none;
+    padding: 0.2em 0.5em;
+    background: #323741;
+    border: 1px #363a43 solid;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+    border-radius: 0.5em;
+    color: #9fa5b5;
+    position: absolute;
+    top: 3em;
+    left: 50%;
+    width: 100%;
+    transform: translateX(-50%);
+    opacity: 0;
+    display: none;
+    transition: 0.2s;
+    z-index: 1;
+}
+
+/* Styling for individual dropdown items */
+.menu li {
+    padding: 0.7em 0.5em;
+    margin: 0.3em 0;
+    border-radius: 0.5em;
+    cursor: pointer;
+    position: relative; /* For positioning the sub-content */
+}
+
+/* Hover effect for dropdown items */
+.menu li:hover {
+    background: #2a2d35;
+}
+
+/* Active state for dropdown items */
+.active1 {
+    background: #23242a;
+}
+
+/* Open the dropdown */
+.menu-open {
+    display: block;
+    opacity: 1;
+}
+
+/* Sub-content styling for files within each dropdown item */
+.sub-content {
+    background: #404552;
+    padding: 0.5em;
+    border-radius: 0.3em;
+    margin-top: 0.5em;
+    list-style: none;
+    display: none; /* Hidden by default */
+    position: absolute;
+    left: 100%;
+    top: 0;
+    width: 200px;
+    z-index: 1;
+}
+
+/* Display the sub-content when hovered over the parent dropdown-item */
+.menu li:hover .sub-content {
+    display: block;
+}
+
+/* Styling for file list items within the sub-content */
+.sub-content li {
+    padding: 0.3em;
+    margin: 0.2em 0;
+    background: #2e333d;
+    border-radius: 0.3em;
+}
+
+/* Hover effect for sub-content items */
+.sub-content li:hover {
+    background: #3a404c;
+}
+
+/* Links inside the sub-content */
+.sub-content li a {
+    color: #9fa5b5;
+    text-decoration: none;
+}
+
+.sub-content li a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Container for two-column layout */
+.container {
+    display: flex;
+}
+
+/* Left column styles */
+.left-column {
+    width: 30%; /* Adjust width as necessary */
+    padding: 10px;
+}
+
+/* Right column styles */
+.right-column {
+    width: 70%; /* Adjust width as necessary */
+    padding: 10px;
+}
+
+/* File list styles */
+.file-list {
+    list-style: none;
+    padding: 0;
+}
+
+/* Individual file list items */
+.file-list li {
+    padding: 0.5em;
+    background: #f1f1f1;
+    margin: 0.3em 0;
+    cursor: pointer;
+    border-radius: 0.3em;
+    transition: background 0.3s;
+}
+
+/* Hover effect for file list items */
+.file-list li:hover {
+    background: #e0e0e0;
+}
+
+/* File viewer styles */
+.file-viewer {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
