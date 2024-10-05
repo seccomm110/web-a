@@ -6,8 +6,8 @@ const tokenPart3 = '3gckWa';
 // Combine the token parts into one
 const token = `${tokenPart1}${tokenPart2}${tokenPart3}`; // Reconstruct the full token
 
-const repoOwner = 'seccomm110'; // Your GitHub username
-const repoName = 'web-a'; // Your repository name
+const repoOwner = 'seccomm110'; 
+const repoName = 'web-a';
 
 const fileStructure = {
     attendance: 'Attendance',
